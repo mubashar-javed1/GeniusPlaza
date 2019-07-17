@@ -25,6 +25,8 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if (modelClass.isAssignableFrom(MainViewModel.class)) {
             return (T) new MainViewModel(repository);
+        } else if (modelClass.isAssignableFrom(AddUserViewModel.class)) {
+            return (T) new AddUserViewModel(repository);
         }
         throw new IllegalArgumentException("Unknown class name");
     }

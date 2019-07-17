@@ -1,10 +1,12 @@
 package com.mobi.geniusplaza.ui.mainactivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +18,7 @@ import com.mobi.geniusplaza.adapter.UserAdapter;
 import com.mobi.geniusplaza.data.UserResponse;
 import com.mobi.geniusplaza.networkcall.ResponseGetUser;
 import com.mobi.geniusplaza.ui.BaseActivity;
+import com.mobi.geniusplaza.ui.createuseractivity.AddUserActivity;
 import com.mobi.geniusplaza.viewmodel.MainViewModel;
 import com.mobi.geniusplaza.viewmodel.ViewModelFactory;
 
@@ -26,6 +29,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
+
+    private static final int REQUEST_CODE = 30;
 
     @Inject
     ViewModelFactory viewModelFactory;
@@ -62,7 +67,7 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.fb_add_user)
     public void onViewClicked() {
-
+        startActivityForResult(new Intent(this, AddUserActivity.class), REQUEST_CODE);
     }
 
     private void consumeResponse(ResponseGetUser response) {
@@ -119,5 +124,15 @@ public class MainActivity extends BaseActivity {
         progressBar.setVisibility(View.GONE);
         tvStatus.setVisibility(View.GONE);
         rvUsers.setVisibility(View.VISIBLE);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode== REQUEST_CODE && resultCode == RESULT_OK) {
+            assert data != null;
+            adapter.addNewUser(data.getParcelableExtra("USER"));
+        }
     }
 }

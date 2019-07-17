@@ -21,6 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.createuseractivity.AddUserActivity"
+            android:label="@string/add_new_user" />
+
+
     </application>
 
 </manifest>

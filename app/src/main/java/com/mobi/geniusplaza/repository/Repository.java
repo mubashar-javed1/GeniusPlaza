@@ -2,6 +2,7 @@ package com.mobi.geniusplaza.repository;
 
 
 
+import com.mobi.geniusplaza.data.User;
 import com.mobi.geniusplaza.data.UserResponse;
 import com.mobi.geniusplaza.networkcall.ApiCall;
 
@@ -18,4 +19,7 @@ public class Repository {
         return apiCall.getUser();
     }
 
+    public Observable<User> createUser(User user) {
+        return apiCall.createUser(user);
+    }
 }

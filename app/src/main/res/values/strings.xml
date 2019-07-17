@@ -3,4 +3,14 @@
 
     <string name="no_result_found">No Result Found</string>
     <string name="cache">Getting Result from Cache</string>
+    <string name="show_result">Show Result</string>
+    <string name="network_error">No Network Connection</string>
+    <string name="save">Save</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="invalid_email">Invalid Email</string>
+    <string name="add_new_user">Add New User</string>
+    <string name="email">Email</string>
+    <string name="user_created">User Created Successfully</string>
+
 </resources>
